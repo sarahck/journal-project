@@ -6,12 +6,12 @@
       <p>Home</p>
       </div>
     </router-link>
-    <router-link to="/browse">
+    <router-link to="/entries">
       <div class="menu-item browse">
         <p>View Entries</p>
       </div>
     </router-link>
-    <router-link to="/cart">
+    <router-link to="/inspiration">
       <div class="menu-item">
         <p>Inspirtaion</p>
       </div>
@@ -22,11 +22,8 @@
 </template>
 
 <script>
-export default {
+export default { //currently don't need
   name: "Header",
-  props: {
-    msg: String,
-  },
 };
 </script>
 
@@ -57,7 +54,7 @@ body {
   grid-area: side;
   display: flex;
   justify-content: flex-end;
-  border: 1px solid red !important;
+  border: 1px solid red;
 }
 
 #side img {
