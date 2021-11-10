@@ -1,6 +1,7 @@
 <template>
   <div class="footer">
       <h1><a href="https://github.com/sarahck/journal-project.git">Github Repo</a></h1>
+      <p>Kymberly Larson and Sarah Carson</p>
   </div>
 </template>
 
