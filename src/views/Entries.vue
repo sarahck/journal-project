@@ -1,7 +1,9 @@
 <template>
   <div class="entries">
     <h1>This is an entries page</h1>
-    <p>{{entry}}</p>
+    <p v-for="chronicle in chronicles" :key="chronicle.id">
+    Entry: {{chronicle.entry}}
+    Date: {{chronicle.date}}</p>
   </div>
 </template>
 
@@ -9,7 +11,7 @@
 export default {
   name: "Entries",
   computed: {
-    entry() {
+    chronicles() {
       return this.$root.$data.journal;
     }
   }

@@ -1,357 +1,63 @@
-let mock = [{
+let mock = [
+  {
     id: 1,
-    name: "Egg Salad",
-    price: "$5.62",
-    country: "United States",
-    image: 'egg-salad.jpg'
+    entry: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    date: "Feb 24, 2021 3:33 AM"
   },
   {
     id: 2,
-    name: "Sweet Potato",
-    price: "$2.41",
-    country: "Brazil",
-    image: "sweet-potato.jpg"
+    entry: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non mauris velit. Integer id urna mauris. Nunc eu est ligula. Duis accumsan diam nibh, eu hendrerit magna porttitor vel. Aliquam varius mauris tempus mollis aliquam. Curabitur in metus eu tellus pulvinar rhoncus. Suspendisse sit amet sapien pretium mauris maximus luctus vel sed augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; In feugiat dapibus quam. Nullam eget dictum eros, non auctor nunc. Suspendisse potenti. Donec eu nisi et nisi rutrum pellentesque. Morbi sed est sodales, dictum velit et, molestie erat. Nunc in elementum ex. Aliquam ut justo mauris.",
+    date: "May 10, 2021 11:59 AM"
   },
   {
     id: 3,
-    name: "Foccacia Bread",
-    price: "$5.92",
-    country: "United States",
-    image: 'focaccia.jpg'
+    entry: "She was only made the society president because she can whistle with her toes.",
+    date: "Oct 14, 2007 11:29 PM"
   },
   {
     id: 4,
-    name: "Canned Lotus Rootlets",
-    price: "$3.58",
-    country: "United States",
-    image: 'lotus-rootlets.jpg'
+    entry: "It's much more difficult to play tennis with a bowling ball than it is to bowl with a tennis ball.",
+    date: "Sep 13, 2021 3:41 PM"
   },
   {
     id: 5,
-    name: "Frilled Toothpicks",
-    price: "$2.47",
-    country: "Canada",
-    image: 'toothpicks.jpg'
-
+    entry: "In vulputate sollicitudin tempor. Duis justo lacus, tempor sit amet nulla vel, elementum viverra velit. Duis elit justo, laoreet eget lectus vel, dignissim dignissim orci. Phasellus hendrerit nisl et purus dictum porttitor. Vivamus ut tempus enim. Etiam blandit nunc eu tortor mollis dapibus. Curabitur ornare ex at justo luctus tincidunt. Duis sollicitudin lacus id risus tristique, ut porta magna feugiat. Nam sit amet luctus arcu.",
+    date: "Feb 18, 2021 8:27 AM"
   },
   {
     id: 6,
-    name: "Rubbed Sage",
-    price: "$8.77",
-    country: "Brazil",
-    image: 'sage-rubbed.jpg'
+    entry: "The dead trees waited to be ignited by the smallest spark and seek their revenge.",
+    date: "Nov 22, 2020 11:22 PM"
   },
   {
     id: 7,
-    name: "Langers Mango Nectar",
-    price: "$9.24",
-    country: "Brazil",
-    image: 'mango-nectar.jpg'
+    entry: "Always bring cinnamon buns on a deep-sea diving expedition.",
+    date: "Jul 20, 2021 4:26 AM"
   },
   {
     id: 8,
-    name: "Cucumber",
-    price: "$3.02",
-    country: "Canada",
-    image: 'cucumber.jpg'
+    entry: "Phasellus luctus sagittis nisl, eget sodales velit mollis et. Sed finibus velit dolor, eu maximus lacus viverra nec. Aliquam iaculis elit a risus ultricies pulvinar. Donec a euismod enim. Sed egestas tortor quam, et accumsan leo rutrum vel.",
+    date: "Jun 29, 2021 11:51 PM"
   },
   {
     id: 9,
-    name: "Fava Beans",
-    price: "$4.76",
-    country: "Brazil",
-    image: 'fava-beans.jpg'
-
+    entry: "Grape jelly was leaking out the hole in the roof. I had always thought lightning was something only I could see. He decided to fake his disappearance to avoid jail.",
+    date: "Sep 27, 2021 1:58 AM"
   },
   {
     id: 10,
-    name: "Coconut",
-    price: "$2.50",
-    country: "Brazil",
-    image: 'coconut.jpg'
+    entry: "Quisque euismod nisl at nulla elementum mattis. Morbi luctus eleifend urna quis commodo. Sed convallis turpis sit amet justo dignissim, ultrices lobortis augue elementum. Cras tristique turpis sit amet efficitur molestie. Sed a nulla commodo, pharetra urna non, maximus mi. Duis venenatis libero interdum lacinia ornare. Morbi nec nibh ligula. Etiam vel metus scelerisque, elementum dui vitae, fringilla nisl. Maecenas euismod, lacus in tempus ultrices, est velit lobortis sem, non iaculis nisl ex ac lorem.",
+    date: "Jun 14, 2020 3:19 PM"
   },
   {
     id: 11,
-    name: "Kettle Potato Chips",
-    price: "$6.70",
-    country: "United States",
-    image: "potato-chips.jpg"
+    entry: "He loved eating his bananas in hot dog buns. I hoped that the people passing by would throw money, but they threw tomatoes instead, so I exchanged my hat for a juicer.",
+    date: "Mar 16, 2020 6:04 PM"
   },
   {
     id: 12,
-    name: "Flour - Rye",
-    price: "$1.14",
-    country: "Canada",
-    image: "rye-flour.jpg"
-  },
-  {
-    id: 13,
-    name: "Feta Chees",
-    price: "$6.92",
-    country: "Brazil",
-    image: "feta-cheese.jpg"
-  },
-  {
-    id: 14,
-    name: "Cheddar Cheese",
-    price: "$5.36",
-    country: "Mexico",
-    image: "cheddar-cheese.jpg"
-  },
-  {
-    id: 15,
-    name: "Capers",
-    price: "$4.18",
-    country: "United States",
-    image: "capers.jpg"
-  },
-  {
-    id: 16,
-    name: "Baguette",
-    price: "$9.18",
-    country: "Mexico",
-    image: "baguette.jpg"
-  },
-  {
-    id: 17,
-    name: "Lasagna Noodles",
-    price: "$4.73",
-    country: "Brazil",
-    image: "lasagna-pasta.jpg"
-  },
-  {
-    id: 18,
-    name: "Pied De Vents Cheese",
-    price: "$5.16",
-    country: "Canada",
-    image: "pied-de-vents.jpg"
-  },
-  {
-    id: 19,
-    name: "Sweet Potato Crackers",
-    price: "$6.81",
-    country: "United States",
-    image: "crackers.jpg"
-  },
-  {
-    id: 20,
-    name: "Mushrooms",
-    price: "$8.62",
-    country: "United States",
-    image: "mushrooms.jpg"
-  },
-  {
-    id: 21,
-    name: "Jerusalem Artichoke",
-    price: "$3.16",
-    country: "United States",
-    image: "jerusalem-artichoke.jpg"
-  },
-  {
-    id: 22,
-    name: "Leather Leaf Fern",
-    price: "$9.41",
-    country: "Brazil",
-    image: "leather-leaf.jpg"
-  },
-  {
-    id: 23,
-    name: "Dried Apricots",
-    price: "$7.42",
-    country: "Brazil",
-    image: "dried-apricots.jpg"
-  },
-  {
-    id: 24,
-    name: "Navel Orange",
-    price: "$3.53",
-    country: "Brazil",
-    image: "navel-orange.jpg"
-  },
-  {
-    id: 25,
-    name: "Sunflower Oil",
-    price: "$1.90",
-    country: "Mexico",
-    image: "sunflower-oil.jpg"
-  },
-  {
-    id: 26,
-    name: "Black Turtle Beans",
-    price: "$4.67",
-    country: "Canada",
-    image: "turtle-beans.jpg"
-  },
-  {
-    id: 27,
-    name: "Bananas",
-    price: "$2.64",
-    country: "Canada",
-    image: "bananas.jpg"
-
-  },
-  {
-    id: 28,
-    name: "Salami",
-    price: "$8.72",
-    country: "Brazil",
-    image: "salami.jpg"
-  },
-  {
-    id: 29,
-    name: "Proscuitto",
-    price: "$9.86",
-    country: "Brazil",
-    image: "proscuitto.jpg"
-  },
-  {
-    id: 30,
-    name: "Cranberries",
-    price: "$5.85",
-    country: "United States",
-    image: "cranberries.jpg"
-
-  },
-  {
-    id: 31,
-    name: "Canteloupe",
-    price: "$4.49",
-    country: "United States",
-    image: "canteloupe.jpg"
-  },
-  {
-    id: 32,
-    name: "Lemon",
-    price: "$2.8Lemon5",
-    country: "United States",
-    image: "lemon.jpg"
-  },
-  {
-    id: 33,
-    name: "Pesto",
-    price: "$2.67",
-    country: "Brazil",
-    image: "pesto.jpg"
-  },
-  {
-    id: 34,
-    name: "Grapefruit Juice",
-    price: "$4.88",
-    country: "Brazil",
-    image: "grapefruit-juice.jpg"
-
-  },
-  {
-    id: 35,
-    name: "Curry Paste",
-    price: "$2.02",
-    country: "Brazil",
-    image: "curry-paste.jpg"
-  },
-  {
-    id: 36,
-    name: "Avocado Oil",
-    price: "$4.45",
-    country: "Canada",
-    image: "avocado-oil.jpg"
-  },
-  {
-    id: 37,
-    name: "Queso Fresco",
-    price: "$9.24",
-    country: "Canada",
-    image: "queso-fresco.jpg"
-  },
-  {
-    id: 38,
-    name: "Key Lime Pie",
-    price: "$5.32",
-    country: "Mexico",
-    image: "key-lime-pie.jpg"
-  },
-  {
-    id: 39,
-    name: "Granny Smith Apple",
-    price: "$2.12",
-    country: "United States",
-    image: "granny-smith.jpg"
-  },
-  {
-    id: 40,
-    name: "Morning Glory Muffin Mix",
-    price: "$9.22",
-    country: "Brazil",
-    image: "muffin-mix.jpg"
-  },
-  {
-    id: 41,
-    name: "Heavy Whipping Cream",
-    price: "$8.78",
-    country: "Brazil",
-    image: 'heavy-cream.jpg'
-  },
-  {
-    id: 42,
-    name: "Red Bell Pepper",
-    price: "$9.03",
-    country: "Brazil",
-    image: 'red-bell-pepper.jpg'
-  },
-  {
-    id: 43,
-    name: "Perrier",
-    price: "$9.36",
-    country: "United States",
-    image: 'perrier.jpg'
-  },
-  {
-    id: 44,
-    name: "Yukon Gold Potatoes",
-    price: "$8.76",
-    country: "Mexico",
-    image: 'yukon-potatoes.jpg'
-  },
-  {
-    id: 45,
-    name: "Salmon Fillets",
-    price: "$6.21",
-    country: "United States",
-    image: 'salmon-fillets.jpg'
-  },
-  {
-    id: 46,
-    name: "Tilapia Fillets",
-    price: "$4.37",
-    country: "Mexico",
-    image: 'tilapia.jpg'
-  },
-  {
-    id: 47,
-    name: "Tomato Pesto",
-    price: "$9.70",
-    country: "Brazil",
-    image: 'tomato-pesto.jpg'
-  },
-  {
-    id: 48,
-    name: "Oil - Olive Bertolli",
-    price: "$8.92",
-    country: "Brazil",
-    image: 'olive-oil.jpg'
-  },
-  {
-    id: 49,
-    name: "Tear Drop Yellow Tomatoes",
-    price: "$3.32",
-    country: "Mexico",
-    image: 'yellow-tomatoes.jpg'
-  },
-  {
-    id: 50,
-    name: "Smoked Paprika",
-    price: "$8.31",
-    country: "Brazil",
-    image: 'smoked-paprika.jpg'
+    entry: "Pink horses galloped across the sea. They finished building the road they knew no one would ever use.",
+    date: "Apr 17, 2021 11:46 AM"
   }
 ]
 
