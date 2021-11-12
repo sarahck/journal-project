@@ -6,7 +6,7 @@ let mock = [
   },
   {
     id: 2,
-    entry: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non mauris velit. Integer id urna mauris. Nunc eu est ligula. Duis accumsan diam nibh, eu hendrerit magna porttitor vel. Aliquam varius mauris tempus mollis aliquam. Curabitur in metus eu tellus pulvinar rhoncus. Suspendisse sit amet sapien pretium mauris maximus luctus vel sed augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; In feugiat dapibus quam. Nullam eget dictum eros, non auctor nunc. Suspendisse potenti. Donec eu nisi et nisi rutrum pellentesque. Morbi sed est sodales, dictum velit et, molestie erat. Nunc in elementum ex. Aliquam ut justo mauris.",
+    entry: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non mauris velit. Integer id urna mauris. Nunc eu est ligula. Duis accumsan diam nibh, eu hendrerit magna porttitor vel. Aliquam varius mauris tempus mollis aliquam. Curabitur in metus eu tellus pulvinar rhoncus. Suspendisse sit amet sapien pretium mauris maximus luctus vel sed augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; In feugiat dapibus quam.",
     date: "May 10, 2021 11:59 AM"
   },
   {
@@ -46,7 +46,7 @@ let mock = [
   },
   {
     id: 10,
-    entry: "Quisque euismod nisl at nulla elementum mattis. Morbi luctus eleifend urna quis commodo. Sed convallis turpis sit amet justo dignissim, ultrices lobortis augue elementum. Cras tristique turpis sit amet efficitur molestie. Sed a nulla commodo, pharetra urna non, maximus mi. Duis venenatis libero interdum lacinia ornare. Morbi nec nibh ligula. Etiam vel metus scelerisque, elementum dui vitae, fringilla nisl. Maecenas euismod, lacus in tempus ultrices, est velit lobortis sem, non iaculis nisl ex ac lorem.",
+    entry: "Quisque euismod nisl at nulla elementum mattis. Morbi luctus eleifend urna quis commodo. Sed convallis turpis sit amet justo dignissim, ultrices lobortis augue elementum. Cras tristique turpis sit amet efficitur molestie. Sed a nulla commodo, pharetra urna non, maximus mi. Duis venenatis libero interdum lacinia ornare. Morbi nec nibh ligula. Etiam vel metus scelerisque, elementum dui vitae, fringilla nisl.",
     date: "Jun 14, 2020 3:19 PM"
   },
   {

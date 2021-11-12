@@ -36,3 +36,20 @@ export default {
   name: "Inspiration",
 };
 </script>
+
+<style scoped>
+
+h1 {
+   text-align: center
+}
+
+h2 {
+   padding: 20px;
+   padding-top: 50px;
+}
+
+li {
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+</style>
