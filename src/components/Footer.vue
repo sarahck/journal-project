@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-      <h1><a href="https://github.com/sarahck/journal-project.git">Github Repo</a></h1>
+      <h2><a href="https://github.com/sarahck/journal-project.git">Github Repo</a></h2>
       <p>Kymberly Larson and Sarah Carson</p>
   </div>
 </template>
@@ -13,11 +13,14 @@ export default { //currently don't need
 
 <style scoped>
 .footer {
-  position: fixed;
-  bottom: 0;
-  margin: 0;
-  width: 100%;
+  flex-shrink: 0;
   text-align: center;
-  border: 1px solid blue;
+  padding-top: 20px;
+  padding-bottom:15px;
+}
+
+.footer a {
+  color: black;
+  text-decoration: none;
 }
 </style>

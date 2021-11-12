@@ -3,17 +3,17 @@
   <div id="side">
     <router-link to="/">
     <div class="menu-item browse">
-      <p>Home</p>
+      <h2>Home</h2>
       </div>
     </router-link>
     <router-link to="/entries">
       <div class="menu-item browse">
-        <p>View Entries</p>
+        <h2>View Entries</h2>
       </div>
     </router-link>
     <router-link to="/inspiration">
-      <div class="menu-item">
-        <p>Inspirtaion</p>
+      <div class="menu-item browse">
+        <h2>Inspiration</h2>
       </div>
     </router-link>
   </div>
@@ -32,12 +32,17 @@ export default { //currently don't need
   box-sizing: border-box;
 }
 
+#menu {
+  padding: 10px;
+}
+
 body {
   margin: 50px 100px;
 }
 
 #menu a {
-  color: #B84901;
+  color: black;
+  text-decoration: none;
 }
 
 #brand {
@@ -54,7 +59,9 @@ body {
   grid-area: side;
   display: flex;
   justify-content: flex-end;
-  border: 1px solid red;
+  //border: 1px solid red;
+  border-bottom: 5px solid black;
+  padding-bottom: 10px;
 }
 
 #side img {
