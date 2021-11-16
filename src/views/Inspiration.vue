@@ -52,4 +52,8 @@ li {
   padding-left: 20px;
   padding-bottom: 10px;
 }
+
+inspo {
+  min-height: 100vh;
+}
 </style>

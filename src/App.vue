@@ -24,7 +24,9 @@ export default {
 * {
   margin: 0;
   padding: 0;
-  background-color: #F4FFFE;
+  //background-color: #FFF9E7;
+  background-color: #A96F46;
+  //background-color: #F4FFFE;
   font-family: 'Roboto Mono', monospace;
   font-weight: 100;
   //background-color: #e5fff9;
