@@ -4,21 +4,36 @@
       <h1>Secrets</h1>
     </div>
         <div class='test'>
-        <p v-for="chronicle in chronicles" :key="chronicle.id">
+
+        <p v-for="chronicle in chronicles" :key="chronicle._id">
+        Alias: {{chronicle.alias}}
+        <br>
         Entry:<br> {{chronicle.entry}}
         <br>
-        Date:<br> {{chronicle.date}}</p>
+        </p>
         </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "Entries",
   computed: {
     chronicles() {
-      return this.$root.$data.journal;
+      return this.getJournal();
     }
+  },
+  methods {
+    async getJournal() {
+      try {
+        let response = await axios.get("/api/journal");
+        console.log("getting library");
+        return response.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
   }
 };
 </script>
