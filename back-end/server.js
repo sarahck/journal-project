@@ -22,13 +22,19 @@ const journalSchema = new mongoose.Schema({ //template for the data you're going
   entries: Array, //will be an array of objects with both entry and date
 });
 
+const entriesSchema = new mongoose.Schema({
+  content: String,
+  date: String,
+});
+
 // Create a model for items in the museum.
 const Journal = mongoose.model('Journal', journalSchema);
+
+const Entries = mongoose.model('Entries', entriesSchema);
 
 app.get('/api/journal', async (req, res) => {
   try {
     let journal = await Journal.find();
-    console.log("testing get");
     res.send(journal);
   } catch(error) {
     res.sendStatus(500);
@@ -36,21 +42,53 @@ app.get('/api/journal', async (req, res) => {
 });
 
 app.post('/api/journal', async (req, res) => {
-  const journal = new Journal({
-    alias: req.body.alias,
-    entries: entries.pushback ({
+  let known = false;
+
+  (await Journal.find()).forEach(async (book) => {
+    if (book.alias === req.body.alias) {
+      known = true;
+      //Journal already exists
+      const newEntry = new Entries({
+        content: req.body.entrycontent,
+        date: req.body.entrydate,
+      })
+      book.entries.push(newEntry);
+      try {
+        await newEntry.save();
+        await book.save();
+        res.send(book);
+      }catch(error) {
+        console.log(error);
+        res.sendStatus(500);
+      }
+    }
+  });
+
+  if (!known) {
+    const newEntry = new Entries({
       content: req.body.entrycontent,
       date: req.body.entrydate,
-    }),
-  });
-  try {
-    await journal.save();
-    res.send(journal);
-  }catch(error) {
-    console.log(error);
-    res.sendStatus(500);
+    });
+    const journal = new Journal({
+      alias: req.body.alias,
+      entries: newEntry,
+    });
+
+    try {
+      await newEntry.save();
+      await journal.save();
+      res.send(journal);
+    } catch(error) {
+      console.log(error);
+      res.sendStatus(500);
+    }
   }
+
 });
+
+//app.delete('api/journal')
+
+
 
 
 app.listen(3000, () => console.log('Server listening on port 3000!')); //DONT FORGET TO DELETE CONSOLE.LOG
