@@ -4,17 +4,39 @@
       <h1>Secrets</h1>
     </div>
         <div class='test'>
-        <p>testing</p>
-        <p v-for="chronicle in chronicles" :key="chronicle._id">
-        Alias: {{chronicle.alias}}
-        <br>
+          <div v-for="chronicle in chronicles" :key="chronicle._id">
+          Secrets From {{chronicle.alias}}
+          <br>
+            <p v-for="entry in chronicle.entries" :key="entry._id">
+            {{entry.content}}
+            <br>
+            <em>{{entry.date}}</em>
+            <button type='button' @click.prevent="deleteEntry(chronicle._id, entry._id)">Remove Secret</button>
+            <br>
 
-        <p v-if="chronicle && chronicle.entries">
-        <div v-for="entry in chronicle.entries" :key="entry._id">
-        Test: {{entries.content}}
+            </p>
+            <svg width="110" height="110" class="tag">
+            <a href="#" @click.prevent="deleteJournal(chronicle._id)">
+            <path d="M  10   0
+                       L 110   0
+                       L 110 100
+                       L  60  60
+                       L  10 100
+                       Z"
+                    fill="#e33c33"/>
 
-        </div>
-          </p>
+              <text x="60"
+                    y="35"
+                    fill="#FFFFFF"
+                    text-anchor="middle"
+                    alignment-baseline="middle">
+                Remove Alias
+              </text>
+            </a>
+            </svg>
+          </div>
+
+
 
         <br>
         </div>
@@ -45,6 +67,25 @@ export default {
         console.log(error);
       }
     },
+    async deleteJournal(chronal) {
+      try {
+        await axios.delete("/api/journal/" + chronal);
+        this.getJournal();
+        return true;
+      } catch(error) {
+        console.log("DeleteJournal Error: ", error);
+      }
+    },
+    async deleteEntry(chronal, entry) {
+    console.log("Inside DeleteEntry");
+      try {
+        await axios.delete("/api/journal/" + chronal + "/" + entry);
+        this.getJournal();
+        return true;
+      } catch(error) {
+        console.log("DeleteEntry Error: ", error);
+      }
+    }
   }
 };
 </script>
@@ -69,12 +110,33 @@ p {
   background-color: #ffe7cc;
 }
 
+em {
+  background-color: #ffe7cc;
+  font-size: 20px;
+}
+
+button {
+  background-color: #ffe7cc;
+  font-size: 20px;
+  float: right;
+  border: none;
+}
+button:hover {
+  background-color: #e33c33;
+  color: #FFFFFF;
+  border-radius: 7.5px;
+}
+
 h1 {
    text-align: center
 }
 
 .entries {
   min-height: 100vh;
+}
+
+text {
+  font-size: 20px;
 }
 
 </style>
