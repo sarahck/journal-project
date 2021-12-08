@@ -30,7 +30,7 @@
                     fill="#FFFFFF"
                     text-anchor="middle"
                     alignment-baseline="middle">
-                Remove Alias
+                Remove All
               </text>
             </a>
             </svg>
@@ -57,34 +57,19 @@ export default {
   },
   methods: {
     async getJournal() {
-      try {
         let response = await axios.get("/api/journal");
-        console.log("getting library");
         this.chronicles = response.data;
-        console.log(response.data);
         return true
-      } catch (error) {
-        console.log(error);
-      }
     },
     async deleteJournal(chronal) {
-      try {
         await axios.delete("/api/journal/" + chronal);
         this.getJournal();
         return true;
-      } catch(error) {
-        console.log("DeleteJournal Error: ", error);
-      }
     },
     async deleteEntry(chronal, entry) {
-    console.log("Inside DeleteEntry");
-      try {
         await axios.delete("/api/journal/" + chronal + "/" + entry);
         this.getJournal();
         return true;
-      } catch(error) {
-        console.log("DeleteEntry Error: ", error);
-      }
     }
   }
 };
@@ -136,7 +121,7 @@ h1 {
 }
 
 text {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 </style>

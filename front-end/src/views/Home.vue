@@ -2,7 +2,7 @@
   <div class="home">
     <h1>Something I Never Told You...</h1>
     <form v-if="creating">
-      <input v-model="alias" placeholder="Alias">
+      <input class="aliasInput" v-model="alias" placeholder="Alias">
       <textarea class="textArea" v-model="entry" rows='8' style="resize: none;" placeholder="Begin typing..."></textarea>
       <svg width="110" height="110" class="tag">
       <a href="#" @click.prevent="addEntry">
@@ -25,18 +25,12 @@
       </svg>
 
       <div class="edit">
-        <input v-model="editAlias" placeholder="Enter your alias to update your secrets">
-        <div v-if="aliasMatch">
-
-        <input class="display" v-model="currentEntry.content"/>
+        <input class="editAlias" v-model="editAlias" placeholder="Enter your alias to update secrets">
+        <div class="vifDiv" v-if="aliasMatch">
+        <input class="display" v-model="currentEntry.content" rows='8'/>
+        <br>
         <button type='button' @click.prevent="updateEntry()">Update Secret</button>
         <button type='button' @click.prevent="nextEntry()">View Next Secret</button>
-
-
-          <p>click button
-          update editedEntry and send it to the back end </p>
-
-
         </div>
       </div>
     </form>
@@ -89,29 +83,19 @@ export default {
       this.creating = !this.creating;
     },
     async addEntry() {
-      try {
         await axios.post('/api/journal', {
           alias: this.alias,
           entrycontent: this.entry,
           entrydate: moment().format('lll'),
         });
-      } catch(error) {
-        console.log("error is", error);
-        }
       this.alias = '';
       this.entry = '';
       this.creating = false;
     },
     async getLibrary() {
-      try {
         let response = await axios.get("/api/journal");
-        console.log("getting library");
         this.library = response.data;
-        console.log(response.data);
         return true;
-      } catch (error) {
-        console.log(error);
-      }
     },
     nextEntry() {
       if (this.index < this.allEntries.length - 1) {
@@ -121,7 +105,12 @@ export default {
         this.index = 0;
     },
     async updateEntry() {
-      
+        await axios.put("/api/journal/" + this.index, {
+          _id: this.currentEntry._id,
+          content: this.currentEntry.content,
+        });
+        this.getLibrary;
+        return true;
     },
   },
 };
@@ -146,12 +135,52 @@ h1 {
   align-items: center;
 }
 
+.aliasInput {
+  background-color: #ffe7cc;
+  width: 25% !important;
+  font-size: 20px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
 form {
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 60%;
+}
+
+.editAlias {
+  background-color: #ffe7cc;
+  width: 40% !important;
+  height: 25px;
+  font-size: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+button {
+  background-color: #e33c33;
+  color: white;
+  width: 20%;
+  height: 25px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 10px;
+  float: right;
+}
+
+.edit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.vifDiv {
+  width: 100%;
+  //display: flex;
+  //justify-content: flex-end;
 }
 
 text {
@@ -160,13 +189,17 @@ text {
 
 .display {
   float: center;
-  width: 75%;
-  height: 100px;
+  width: 100%;
+  height: 40px;
 }
 
 .tag {
   display: flex;
   align-self: flex-end;
+}
+
+input {
+  background-color: #ffe7cc;
 }
 
 </style>

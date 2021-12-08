@@ -16,16 +16,17 @@ mongoose.connect('mongodb://127.0.0.1:27017/library', { //27017 is the mongodb p
   useNewUrlParser: true
 });
 
-// Create a scheme for items in the museum: a title and a path to an image.
-const journalSchema = new mongoose.Schema({ //template for the data you're going to store
-  alias: String,
-  entries: Array, //will be an array of objects with both entry and date
-});
-
 const entriesSchema = new mongoose.Schema({
   content: String,
   date: String,
 });
+
+// Create a scheme for items in the museum: a title and a path to an image.
+const journalSchema = new mongoose.Schema({ //template for the data you're going to store
+  alias: String,
+  entries: [entriesSchema], //will be an array of objects with both entry and date
+});
+
 
 // Create a model for items in the museum.
 const Journal = mongoose.model('Journal', journalSchema);
@@ -99,62 +100,33 @@ app.delete('/api/journal/:jid/:id', async (req, res) => {
     let journal = await Journal.findOne({
       _id: req.params.jid
     });
-    //console.log(journal.entries);
     for (let index in journal.entries) {
-      console.log("in for loop");
-      //console.log("Entry ", );
-      // console.log("Outside if ", entr._id);
       if (journal.entries.at(index)._id.equals(req.params.id)) {
-          console.log("Inside if");
           journal.entries.splice(index, 1);
-          console.log(journal.entries);
           break;
       }
     }
     journal.save();
     res.sendStatus(200);
   } catch(error) {
-    console.log("500 error is ", error);
     res.sendStatus(500);
   }
 });
 
-app.put('api/journal/index', async(req, res) => {
+app.put('/api/journal/:index', async(req, res) => {
   try {
+    var objectId = mongoose.Types.ObjectId(req.body._id);
     let journal = await Journal.findOne({
-      entries: {
-        _id: req.body.id,
-      }
+      "entries._id": objectId,
     });
-    journal.entries = req.body.entries;
+    journal.entries.at(req.params.index).content = req.body.content;
     await journal.save();
     res.sendStatus(200);
   } catch (error) {
-    console.log(error);
     res.sendStatus(500);
   }
 });
 
-// async editItem(item) {
-//       try {
-//         await axios.put("/api/items/" + item._id, {
-//           title: this.findItem.title,
-//           description: this.findItem.description,
-//         });
-//         this.findItem = null;
-//         this.getItems();
-//         return true;
-//       } catch (error) {
-//         console.log(error);
-//       }
-//     },
-//   }
-// }
-
-//let Journal = await Journal.find
-//then loop through entries array
 
 
-
-
-app.listen(3000, () => console.log('Server listening on port 3000!')); //DONT FORGET TO DELETE CONSOLE.LOG
+app.listen(3000);
